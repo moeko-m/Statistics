@@ -1,0 +1,114 @@
+---
+title: Migration Factors on Emigration Trends and Housing Prices in Portugal
+author:
+  - name: Catarina Carneiro - 20240690
+  - name: Elcano Gaspar - 20241021
+  - name: Moeko Mitani - 20240670
+affiliation:
+  - address: Group 26
+  - address: Statistics for Data Science Project (Fall/Spring Semester 2024-2025)
+  - address: Masters in Data Science and Advanced Analytics
+  - address: NOVA Information Management School 
+column_numbers: 3
+logoleft_name: ./image2.png
+logoright_name: ./images.png
+output: 
+  posterdown::posterdown_html:
+    self_contained: false
+bibliography: packages.bib
+primary_colour: '#A2CFFE'
+css: style.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Introduction
+
+This research examines the interplay between immigration, emigration,
+and housing prices in Portugal, leveraging econometric analyses to evaluate the
+relationship and reflect on migration theories. Over the past decade, rising
+immigration and housing costs have driven debates about migration’s role in
+emigration trends, particularly in Portugal. Push-and-pull factors, traditionally framed
+as economic pressures or opportunities, are hypothesized to influence migration
+flows. This study integrates economic indicators—housing prices, GDP per capita,
+unemployment rates—to assess these dynamics, addressing gaps in existing
+research by focusing on how these factors jointly impact migration. 
+
+# Research Question
+
+Does an increase in immigration, GDP, and housing prices influence emigration rates in a
+Portugal?
+
+# Methodology
+
+This study aims to analyze the relationships between emigration rates and three key explanatory variables: immigration, unemployment, GDP per capita, and housing prices.
+The analysis is based on panel data, which includes observations from 6 countries over a 5-year period (2018-2022), resulting in a total of 30 observations.
+To investigate these relationships, we employ two econometric models: the Fixed Effects (Within) model and the Random Effects model.
+Some of the variables used in this analysis—Emigration, immigration and GDP per capita—were log-transformed to address potential issues of skewness and heteroscedasticity, ensuring the validity of the regression results.
+
+# Literature Reflection and Theoretical Framework
+
+The literature highlights mixed findings on migration’s impact on housing markets. Studies such as Saiz (2007) and Sá (2015) identify opposing effects of immigration on housing prices across regions, attributing variations to clustering behaviors and labor market elasticities. This study builds on these findings, considering Card’s (2001) “push” effect and Saiz’s (2007) “pull” dynamics. Push factors, such as unemployment and rising housing costs, are hypothesized to spur emigration, while pull factors, including higher wages abroad, attract immigrants.
+
+Variables were selected based on their relevance to migration theories and public discourse:
+
+<ul>
+  <li>Housing Prices: Highlighted in both literature (Querido, 2023) and local news as a barrier to residency, this factor reflects affordability challenges.</li>
+  <li>Immigration Rates: Capture pull effects and integration challenges.</li>
+  <li>Unemployment Rates: Proxy economic pressure driving out-migration.</li>
+  <li>GDP per Capita: Indicator of economic health and opportunity.</li>
+</ul>
+
+# Results
+
+Diagnostic tests confirmed the absence of multicollinearity (VIF < 5) and serial correlation (DW = 2.38, p = 0.71), supporting model robustness. The Hausman test indicated that RE models were preferable (p = 0.94).
+
+<figure>
+  <img src="./Rplot03.png" alt="Scaterplot Matrix of Key Variables" width="80%">
+  <figcaption>Figure 1: Scaterplot Matrix of Key Variables</figcaption>
+</figure>
+
+<figure>
+  <img src="./Rplot01.png" alt="Emigration Trend Over Time" width=" 80%">
+  <figcaption>Figure 2: Emigration Trend Over Time</figcaption>
+</figure>
+
+<figure>
+  <img src="./imege1.png" alt="Fixed Effects Model Summary" width="80%">
+  <figcaption>Figure 3: Fixed Effects Model Summary</figcaption>
+</figure>
+
+
+<figure>
+  <img src="./image0.png" alt="Random Effects Model Summary" width="80%">
+  <figcaption>Figure 4: Random Effect Model Summary</figcaption>
+</figure>
+
+# Conclusion
+
+The analysis reveals that:
+<ol>
+  <li>Immigration significantly increases emigration, supporting the hypothesis that perceived competition influences out-migration.</li>
+  <li>Higher housing prices exhibit a significant negative association with emigration in the Random Effects model, contrary to expectations. This requires further investigation to account for possible confounding variables.</li>
+  <li>GDP per capita and unemployment rates showed no significant direct effects, suggesting they may operate through more complex mechanisms.</li>
+</ol>
+
+```{r, include=FALSE}
+knitr::write_bib(c('knitr','rmarkdown','posterdown','pagedown'), 'packages.bib')
+```
+
+# References
+
+Atoyan R., Christiansen L., Dizioli A., Ebeke C., Ilahi N., Ilyina A., Mehrez G., Qu H., Raei F., Rhee A., & Zakharova D. (2016). Emigration and Its Economic Impact on
+Eastern Europe. https://doi.org/10.5089/9781475576368.006
+
+Sá, F. (2015). Immigration and house prices in the UK. Economic Journal,
+125(587) , 1393–1424.
+
+Saiz, A. (2007). Immigration and housing rents in American cities. Journal of
+Urban Economics, 61(2) , 345–371.
+
+Querido, A. M. (2023). Immigration and real estate prices in Portugal: A panel
+data analysis. Master’s Thesis, Univer sidade de Lisboa.
